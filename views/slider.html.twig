@@ -1,0 +1,63 @@
+{% extends '_layout.html.twig' %}
+
+{% block bodyClass %}impress-not-supported{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <style type="text/css">
+
+        .step.future,
+        .step.past {
+            opacity: {{ slider.config.inactive_opacity }};
+        }
+        .step.past, .step.future {
+            visibility: {{ slider.config.inactive_opacity > 0 ? 'visible' : 'hidden' }};
+        }
+    </style>
+{% endblock %}
+
+{% block contentWrapper %}
+
+    {% include '_impress_slide.html.twig' with {"slider":slider} %}
+
+    <div class="site-wrapper" id="wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                <div id="content">
+                    {% block content %}
+                        <div class="inner cover">
+
+						{% if (slider.slides | length) > 1 %}
+                        <div id="arrow_clickable">
+                            <div id="left_arrow_clickable"></div>
+                            <div id="right_arrow_clickable"></div>
+                        </div>
+                        <div id="arrow_container">
+                            <div id="left_arrow"><span class="glyphicon glyphicon-chevron-left"></span></div>
+                            <div id="right_arrow"><span class="glyphicon glyphicon-chevron-right"></span></div>
+                        </div>
+						{% endif %}
+
+                        {% if slider.config.thumbnails is defined %}
+                            {% include '_impress_thumbnails.html.twig' with {"slider": slider} %}
+                        {% endif %}
+
+                        </div>
+                    {% endblock %}
+                </div>
+
+                {% include '_footer.html.twig' %}
+            </div>
+        </div>
+    </div>
+
+    {#<div class="fallback-message">#}
+        {#<p>{{ 'impressjs.fallbackMessage' | trans }}</p>#}
+    {#</div>#}
+
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    <script src="{{ asset('js/main_impress.js') }}" type="text/javascript"></script>
+{% endblock %}

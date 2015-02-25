@@ -1,0 +1,9 @@
+<?php
+
+define('APPDEBUG', true);
+define('LOCALES', 'fr|en');
+
+define('CONVERT_PATH', '/usr/bin/convert');
+
+define('DOMAIN_FR', 'fr.mydomain.com');
+define('DOMAIN_EN', 'en.mydomain.com');

@@ -1,0 +1,23 @@
+{
+    "name": "pierstoval/impress-portfolio",
+    "autoload": {
+        "psr-0": {
+			"Pierstoval": "/"
+		}
+    },
+    "require": {
+        "silex/silex": "~1.2",
+        "twig/twig": ">=1.8,<2.0-dev",
+        "symfony/twig-bridge": "~2.3",
+        "symfony/translation": "~2.3",
+        "symfony/config": "~2.3",
+        "symfony/yaml": "~2.3",
+        "jbinfo/mobile-detect-service-provider": "~1"
+    },
+    "authors": [
+        {
+            "name": "Alex Pierstoval",
+            "email": "pierstoval@gmail.com"
+        }
+    ]
+}

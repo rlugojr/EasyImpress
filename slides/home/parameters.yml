@@ -1,0 +1,33 @@
+config:
+    inactive_opacity: 1
+    thumbnails:
+        width: 0
+        height: 0
+    data:
+        transition-duration: 1000
+        min-scale: 1
+    increments:
+        x:
+            base: 0
+            i: 500
+        y:
+            base: 0
+            i: 500
+        z:
+            base: 0
+            i: 500
+        "rotate-x":
+            base: 0
+            i: 45
+        "rotate-y":
+            base: 0
+            i: 45
+        "rotate-z":
+            base: 0
+            i: 45
+    attr:
+        style: "width: 100%;height: 100%;"
+slides:
+    "first_slide": ~
+    "sec":
+        credits: This one is not translated, you see...

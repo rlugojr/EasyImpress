@@ -1,0 +1,15 @@
+{
+    "name": "pierstoval/impress-porfolio",
+    "version": "0.1",
+    "authors": [
+        "Alex Pierstoval <pierstoval@gmail.com>"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/Pierstoval/ImpressPortfolio",
+    "private": true,
+    "dependencies": {
+        "bootstrap": "https://github.com/twbs/bootstrap.git#~3",
+        "jquery": "https://github.com/jquery/jquery.git#~1.11",
+        "impress.js": "https://github.com/bartaz/impress.js.git#0.5.3"
+    }
+}

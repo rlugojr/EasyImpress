@@ -1,0 +1,22 @@
+<div id="slider-thumbnails">
+    {% spaceless %}
+    {% for id, slide in slider.slides %}
+        {# Override de l'id si jamais on utilise l'attribut "id" d'un slide #}
+        {% if slide.id %}
+            {% set id = slide.id %}
+        {% endif %}
+
+        {% set imageUrl = url('sliderImg', {'sliderName': name, 'slideId': id, thumbnail: "true"}) %}
+        {% set alt = "" %}
+
+        {% if slide.text is defined and slide.text is not empty %}
+            {% set alt = (slide.text|trans) %}
+        {% endif %}
+        <a href="#/{% if id is numeric %}slide_{{ slider.name }}_{{ id }}{% else %}{{ id }}{% endif %}"
+           id="link_{% if id is numeric %}slide_{{ slider.name }}_{{ id }}{% else %}{{ id }}{% endif %}"
+            style="width: {{ slider.config.thumbnails.width }}px; height: {{ slider.config.thumbnails.height }}px;" >
+            <img src="{{ imageUrl }}" alt="{{ alt }}" style="width: {{ slider.config.thumbnails.width }}px; height: {{ slider.config.thumbnails.height }}px;" />
+        </a>
+    {% endfor %}
+    {% endspaceless %}
+</div>

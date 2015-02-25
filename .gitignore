@@ -1,0 +1,6 @@
+config/config.php
+
+vendor/
+
+slides/*/img/*_thumb.jpg
+slides/*/img/*_mobile.jpg
