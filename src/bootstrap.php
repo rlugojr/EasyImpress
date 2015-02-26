@@ -14,6 +14,7 @@ $app->register(new MobileDetectServiceProvider());
 
 include 'twig.php';
 include 'translation.php';
+include 'Impress.php';
 include 'Slide.php';
 
 /** @var UrlGenerator $urlGenerator */
