@@ -29,12 +29,17 @@
 
         {# Permet d'avoir une incrémentation régulière de certaines données en fonction des paramètres du slider #}
         {% for incType, incDatas in increments %}
+            {% set merge = false %}
             {% if slide['reset'~(incType|upper)] is defined and slide['reset'~(incType|upper)] == true %}
                 {% set increments = increments | merge( { (incType): (incDatas | merge({ current: incDatas.base })) } ) %}
-            {% else %}
+                {% set merge = true %}
+            {% elseif data[incType] is not defined %}
                 {% set increments = increments | merge( { (incType): (incDatas | merge({ current: incDatas.current + incDatas.i })) } ) %}
+                {% set merge = true %}
             {% endif %}
-            {% set data = data | merge({ (incType): incDatas.current }) %}
+            {% if merge %}
+                {% set data = data | merge({ (incType): incDatas.current }) %}
+            {% endif %}
         {% endfor %}
 
         {# Paramétrage des images de fond #}
