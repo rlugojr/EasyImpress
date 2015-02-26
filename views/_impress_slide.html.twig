@@ -7,9 +7,7 @@
     {% set increments = {} %}
     {% if slider.config.increments %}
         {% for incType, inc in slider.config.increments %}
-            {% if inc.base is defined %}
-                {% set increments = increments | merge({ (incType): { current : inc.base, base: inc.base, i: inc.i } }) %}
-            {% endif %}
+            {% set increments = increments | merge({ (incType): { current : inc.base, base: inc.base, i: inc.i } }) %}
         {% endfor %}
     {% endif %}
 
@@ -27,21 +25,6 @@
         {# Définit le tableau ATTR à utiliser pour ce slide #}
         {% set attr = slide.attr is not empty ? slide.attr : {} %}
 
-        {# Permet d'avoir une incrémentation régulière de certaines données en fonction des paramètres du slider #}
-        {% for incType, incDatas in increments %}
-            {% set merge = false %}
-            {% if slide['reset'~(incType|upper)] is defined and slide['reset'~(incType|upper)] == true %}
-                {% set increments = increments | merge( { (incType): (incDatas | merge({ current: incDatas.base })) } ) %}
-                {% set merge = true %}
-            {% elseif data[incType] is not defined %}
-                {% set increments = increments | merge( { (incType): (incDatas | merge({ current: incDatas.current + incDatas.i })) } ) %}
-                {% set merge = true %}
-            {% endif %}
-            {% if merge %}
-                {% set data = data | merge({ (incType): incDatas.current }) %}
-            {% endif %}
-        {% endfor %}
-
         {# Paramétrage des images de fond #}
         {% if slide.image == true %}
             {% set imageStyle = 'background-image: url(\''~url('sliderImg', {'sliderName': name, 'slideId': id})~'\');' %}
@@ -51,20 +34,20 @@
         {% endif %}
 
         <div {% if id is numeric %}id="slide_{{ name }}_{{ id }}"{% else %} id="{{ id }}"{% endif %}
-            {% if data %}{% for key, value in data if value is not null %} data-{{ key }}="{{ value }}"{% endfor %}{% endif %}
-            {% if attr %}{% for key, value in attr if value is not null %} {{ key }}="{{ value | raw }}"{% endfor %}{% endif %}
+            {%- if data %} {% for key, value in data if value is not null %} data-{{ key }}="{{ value }}"{% endfor %}{% endif -%}
+            {%- if attr %} {% for key, value in attr if value is not null %} {{ key }}="{{ value | raw }}"{% endfor %}{% endif -%}
         >
-            {% if slide.view is defined and slide.view == true %}
+            {% if slide.view == true %}
                 {% include '@Sliders:'~name~'/'~id~'.html.twig' %}
             {% else %}
-                {% if slide.text is defined and (slide.text|trans) is not empty %}
-                    {% if slide.wrapWithTag is defined and slide.wrapWithTag is not empty %}<{{ slide.wrapWithTag }}>{% endif %}
+                {% if (slide.text|trans) is not empty %}
+                    {% if slide.wrapWithTag is not empty %}<{{ slide.wrapWithTag }}>{% endif %}
                         {{ slide.text|trans|raw }}
-                    {% if slide.wrapWithTag is defined and slide.wrapWithTag is not empty %}</{{ slide.wrapWithTag }}>{% endif %}
+                    {% if slide.wrapWithTag is not empty %}</{{ slide.wrapWithTag }}>{% endif %}
                 {% else %}
                     &nbsp;
                 {% endif %}
-                {% if slide.credits is defined and (slide.credits | trans) is not empty %}
+                {% if (slide.credits|trans) is not empty %}
                     <div class="credits">
                         <span class="credit-collapse glyphicon glyphicon-chevron-up"></span>
                         <div class="credits-inner">{{ slide.credits|trans|raw }}</div>

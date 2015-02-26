@@ -48,22 +48,54 @@ class Impress
         $slides     = Yaml::parse(SLIDESDIR.$name.'/parameters.yml');
         $this->name = $name;
 
+        if (!$slides) {
+            throw new \InvalidArgumentException('Slider is empty.');
+        }
+
         $this->computeConfigDatas($slides);
     }
 
-    protected function computeConfigDatas(array $slides)
+    protected function computeConfigDatas(array $slides = array())
     {
+        if (!isset($slides['config'])) { $slides['config'] = array(); }
+        if (!isset($slides['config']['data'])) { $slides['config']['data'] = array(); }
+        if (!isset($slides['slides'])) { $slides['slides'] = array(); }
+
+        if (!count($slides['slides'])) {
+            throw new \InvalidArgumentException('You must define at least one slide.');
+        }
+
         $slides['config']['data'] = array_merge(array(
-            'x'                   => 0,
-            'y'                   => 0,
-            'z'                   => 0,
-            'rotate'              => 0,
-            'rotate-x'            => 0,
-            'rotate-y'            => 0,
-            'rotate-z'            => 0,
             'transition-duration' => 1000,
             'name'                => $this->name,
-        ), isset($slides['config']['data']) ? $slides['config']['data'] : array());
+        ), $slides['config']['data']);
+
+        $defaultImpressData = array(
+            'x'        => null,
+            'y'        => null,
+            'z'        => null,
+            'rotate'   => null,
+            'rotate-x' => null,
+            'rotate-y' => null,
+            'rotate-z' => null,
+        );
+
+        $slides['config']['data'] = array_merge($defaultImpressData, isset($slides['config']['data']) ? $slides['config']['data'] : array());
+
+        if (!isset($slides['config']['increments'])) {
+            $slides['config']['increments'] = array();
+        }
+
+        foreach ($defaultImpressData as $key => $v) {
+            if (!isset($slides['config']['increments'][$key])) {
+                $slides['config']['increments'][$key] = array();
+            }
+            $slides['config']['increments'][$key] = array_merge(array(
+                'current' => 0,
+                'base' => null,
+                'i' => null,
+            ), $slides['config']['increments'][$key]);
+        }
 
         if (!isset($slides['config']['attr']['class'])) {
             $slides['config']['attr']['class'] = 'impress_slides_container';
@@ -77,25 +109,64 @@ class Impress
         $slides['config']['attr']['class'] .= ' impress_slide_'.$this->name;
         $slides['config']['attr']['class'] = trim($slides['config']['attr']['class']);
 
+        $calculateIncrements = $slides['config']['increments'];
+
         foreach ($slides['slides'] as $k => $slide) {
             $slide = array_merge(array(
                 'id'              => $k,
                 'createParagraph' => true,
-                'attr'            => '',
-            ), $slide ? : array());
+                'attr'            => array(),
+                'reset'           => array(),
+                'view'            => false,
+                'image'           => false,
+                'wrapWithTag'     => '',
+                'text'            => '',
+                'credits'         => '',
+            ), $slide ?: array());
+
+            $slide['reset'] = array_merge(array_fill_keys(array_keys($defaultImpressData), false), $slide['reset']);
 
             $slide['attr']['class'] = trim('step '.(isset($slide['attr']['class']) ? $slide['attr']['class'] : ''));
 
-            if (!isset($slide['text']) && $k !== 'overview') {
+            if (!$slide['text'] && $k !== 'overview') {
                 $slide['text'] = 'slides.'.$slides['config']['data']['name'].'.'.$k;
             }
 
-            $slides['slides'][$k] = new Slide($slide, $this);
+            $d = array_merge($defaultImpressData, isset($slide['data']) && count((array)$slide['data']) ? $slide['data'] : $defaultImpressData);
+
+            foreach ($calculateIncrements as $incType => $incData) {
+                $merge = false;
+                $incType = strtolower($incType);
+
+                if (null !== $incData['base'] && ($slide['reset'][$incType] === true || $d[$incType] === null)) {
+                    $calculateIncrements[$incType]['current'] = $incData['base'];
+                    $merge = true;
+                } elseif (null !== $incData['base'] && null !== $incData['i'] && null === $d[$incType]) {
+                    $calculateIncrements[$incType]['current'] += $incData['i'];
+                    $merge = true;
+                }
+                if ($merge) {
+                    $d[$incType] = $calculateIncrements[$incType]['current'];
+                }
+            }
+
+            $d = array_merge(array_fill_keys(array_keys($defaultImpressData), 0), array_filter($d));
+
+            $slide['data'] = $d;
+
+            $slides['slides'][$k] = $slide;//new Slide($slide, $this);
         }
 
         $this->config = $slides['config'];
         $this->values = $slides;
         $this->slides = $slides['slides'];
+
+//        header('Content-Type: application/json');
+//        echo json_encode($slides);
+////        echo'<pre style="margin: -10px; padding: 10px;background: black; color: #eee;">';
+////        print_r($slides);
+////        echo '</pre>';
+//        exit;
     }
 
     public function getName()

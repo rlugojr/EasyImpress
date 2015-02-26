@@ -55,7 +55,6 @@ body {
 	-o-background-size: cover;
 	background-size: cover;
     text-align: center;
-    text-shadow: 0 0 10px #000, 0 0 10px #000;
 }
 
 .text-s, #impress .text-s { font-size: 0.8em; }
