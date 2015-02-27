@@ -319,11 +319,11 @@ body {
 }
 
 #overview {
-    display: none
+    display: none;
 }
 
-.impress-on-overview .step {
-    opacity: 1;
+#impress.overview .step {
+    opacity: 0.75;
     cursor: pointer;
 }
 

@@ -24,6 +24,11 @@
         if (d.getElementById('link_'+event.target.id)) {
             d.getElementById('link_'+event.target.id).classList.add('active');
         }
+        if (event.target.id === 'overview') {
+            d.getElementById('impress').classList.add('overview');
+        } else {
+            d.getElementById('impress').classList.remove('overview');
+        }
     });
     window.addEventListener('impress:stepleave', function (event) {
         event.target.classList.add('leaving');
