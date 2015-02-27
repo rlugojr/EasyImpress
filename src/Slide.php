@@ -13,12 +13,12 @@ class Slide implements ArrayAccess
     {
         if (strpos($method, 'get') === 0) {
             $method = lcfirst(preg_replace('~^get~', '', $method));
-            if (isset($this->values[$method])) {
-                return $this->values[$method];
+            if ($this->offsetExists($method)) {
+                return $this->offsetGet($method);
             }
         } else {
-            if (isset($this->values[$method])) {
-                return $this->values[$method];
+            if ($this->offsetExists($method)) {
+                return $this->offsetGet($method);
             }
         }
         return null;
