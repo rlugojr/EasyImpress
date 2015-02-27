@@ -1,8 +1,5 @@
 <?php
 
-use Symfony\Component\Yaml\Yaml;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
 class Impress
 {
 
@@ -20,12 +17,13 @@ class Impress
 
     /**
      * @param string $name
+     * @param array  $slides
      *
      * @return Impress
      */
-    public static function create($name)
+    public static function create($name, array $slides)
     {
-        $self = new static($name);
+        $self = new static($name, $slides);
         return $self;
     }
 
@@ -40,12 +38,8 @@ class Impress
         return null;
     }
 
-    function __construct($name)
+    function __construct($name, array $slides)
     {
-        if (!file_exists(SLIDESDIR.$name.'/parameters.yml')) {
-            throw new NotFoundHttpException('slider_not_found');
-        }
-        $slides     = Yaml::parse(SLIDESDIR.$name.'/parameters.yml');
         $this->name = $name;
 
         if (!$slides) {

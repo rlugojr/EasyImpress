@@ -5,6 +5,8 @@ use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 require_once __DIR__.'/../vendor/autoload.php';
 require_once __DIR__.'/../config/constants.php';
@@ -41,7 +43,11 @@ if (APPDEBUG === true) {
 $app->get('/', function () use ($app, $twig) {
     $sliderName = 'home';
 
-    $slider = Impress::create($sliderName);
+    if (!file_exists(SLIDESDIR.$sliderName.'/parameters.yml')) {
+        throw new NotFoundHttpException('slider_not_found');
+    }
+    $slides = Yaml::parse(SLIDESDIR.$sliderName.'/parameters.yml');
+    $slider = Impress::create($sliderName, $slides);
     return $twig->render('slider.html.twig', array('slider'=>$slider,'name'=>$sliderName));
 })
 ->bind('home');
@@ -80,7 +86,11 @@ $app->get('/img/{sliderName}.{slideId}.jpg', function ($sliderName, $slideId, Re
 
             if ($thumb) {
                 if (!file_exists($thumbFile)) {
-                    $slider = Impress::create($sliderName);
+                    if (!file_exists(SLIDESDIR.$sliderName.'/parameters.yml')) {
+                        throw new NotFoundHttpException('slider_not_found');
+                    }
+                    $slides = Yaml::parse(SLIDESDIR.$sliderName.'/parameters.yml');
+                    $slider = Impress::create($sliderName, $slides);
                     $conf = $slider->getConfig();
                     $w = isset($conf['thumbnails']['width']) ? (int) $conf['thumbnails']['width'] : 150;
                     $h = isset($conf['thumbnails']['height']) ? (int) $conf['thumbnails']['height'] : 150;
