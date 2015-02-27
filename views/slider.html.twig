@@ -8,10 +8,7 @@
     <style type="text/css">
         .step.future,
         .step.past {
-            opacity: {{ slider.config.inactive_opacity }};
-        }
-        .step.past, .step.future {
-            visibility: {{ slider.config.inactive_opacity > 0 ? 'visible' : 'hidden' }};
+            opacity: {{ slider.config['inactive_opacity'] }};
         }
     </style>
 {% endblock %}

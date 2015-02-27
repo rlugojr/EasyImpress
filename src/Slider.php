@@ -98,7 +98,7 @@ class Slider implements \Countable
             $slides['config']['attr']['class'] = 'impress_slides_container '.$slides['config']['attr']['class'];
         }
 
-        $slides['config']['inactive_opacity'] = isset($slides['config']['inactive_opacity']) ? (int) $slides['config']['inactive_opacity'] : 1;
+        $slides['config']['inactive_opacity'] = isset($slides['config']['inactive_opacity']) ? (float) $slides['config']['inactive_opacity'] : 1;
 
         $slides['config']['attr']['class'] .= ' impress_slide_'.$this->name;
         $slides['config']['attr']['class'] = trim($slides['config']['attr']['class']);
