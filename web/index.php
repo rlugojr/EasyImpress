@@ -47,7 +47,7 @@ $app->get('/', function () use ($app, $twig) {
         throw new NotFoundHttpException('slider_not_found');
     }
     $slides = Yaml::parse(SLIDESDIR.$sliderName.'/parameters.yml');
-    $slider = Impress::create($sliderName, $slides);
+    $slider = Slider::create($sliderName, $slides);
     return $twig->render('slider.html.twig', array('slider'=>$slider,'name'=>$sliderName));
 })
 ->bind('home');
@@ -90,7 +90,7 @@ $app->get('/img/{sliderName}.{slideId}.jpg', function ($sliderName, $slideId, Re
                         throw new NotFoundHttpException('slider_not_found');
                     }
                     $slides = Yaml::parse(SLIDESDIR.$sliderName.'/parameters.yml');
-                    $slider = Impress::create($sliderName, $slides);
+                    $slider = Slider::create($sliderName, $slides);
                     $conf = $slider->getConfig();
                     $w = isset($conf['thumbnails']['width']) ? (int) $conf['thumbnails']['width'] : 150;
                     $h = isset($conf['thumbnails']['height']) ? (int) $conf['thumbnails']['height'] : 150;
@@ -146,7 +146,11 @@ $app->get('/{sliderName}', function ($sliderName) use ($app, $twig, $urlGenerato
         return new RedirectResponse($urlGenerator->generate('home'));
     }
 
-    $slider = Impress::create($sliderName);
+    if (!file_exists(SLIDESDIR.$sliderName.'/parameters.yml')) {
+        throw new NotFoundHttpException('slider_not_found');
+    }
+    $slides = Yaml::parse(SLIDESDIR.$sliderName.'/parameters.yml');
+    $slider = Slider::create($sliderName, $slides);
     return $twig->render('slider.html.twig', array('slider'=>$slider,'name'=>$sliderName));
 })
 ->bind('slider');

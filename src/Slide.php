@@ -1,12 +1,12 @@
 <?php
 
-class Slide implements ArrayAccess
+class Slide implements \ArrayAccess
 {
 
     /** @var array */
     private $values = array();
 
-    /** @var Impress */
+    /** @var Slider */
     private $slider;
 
     public function __call($method, $args)
@@ -24,7 +24,7 @@ class Slide implements ArrayAccess
         return null;
     }
 
-    public function __construct($values, Impress $slider)
+    public function __construct($values, Slider $slider)
     {
         $this->values = $values;
         $this->slider = $slider;

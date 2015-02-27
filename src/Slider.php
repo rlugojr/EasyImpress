@@ -1,6 +1,6 @@
 <?php
 
-class Impress
+class Slider implements \Countable
 {
 
     /** @var Slide[] */
@@ -19,7 +19,7 @@ class Impress
      * @param string $name
      * @param array  $slides
      *
-     * @return Impress
+     * @return $this
      */
     public static function create($name, array $slides)
     {
@@ -181,4 +181,11 @@ class Impress
         return $this->slides[$id];
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function count()
+    {
+        return count($this->slides);
+    }
 }
