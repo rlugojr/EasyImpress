@@ -135,18 +135,14 @@ class Impress
             $d = array_merge($defaultImpressData, isset($slide['data']) && count((array)$slide['data']) ? $slide['data'] : $defaultImpressData);
 
             foreach ($calculateIncrements as $incType => $incData) {
-                $merge = false;
-                $incType = strtolower($incType);
-
-                if (null !== $incData['base'] && ($slide['reset'][$incType] === true || $d[$incType] === null)) {
+                if (null !== $incData['base'] && isset($slide['reset'][$incType]) && $slide['reset'][$incType] === true ) {
                     $calculateIncrements[$incType]['current'] = $incData['base'];
-                    $merge = true;
-                } elseif (null !== $incData['base'] && null !== $incData['i'] && null === $d[$incType]) {
-                    $calculateIncrements[$incType]['current'] += $incData['i'];
-                    $merge = true;
                 }
-                if ($merge) {
+                if (null === $d[$incType]) {
                     $d[$incType] = $calculateIncrements[$incType]['current'];
+                }
+                if (null !== $incData['base'] && null !== $incData['i']) {
+                    $calculateIncrements[$incType]['current'] += $incData['i'];
                 }
             }
 
@@ -154,19 +150,13 @@ class Impress
 
             $slide['data'] = $d;
 
-            $slides['slides'][$k] = $slide;//new Slide($slide, $this);
+            $slides['slides'][$k] = new Slide($slide, $this);
         }
 
         $this->config = $slides['config'];
         $this->values = $slides;
         $this->slides = $slides['slides'];
 
-//        header('Content-Type: application/json');
-//        echo json_encode($slides);
-////        echo'<pre style="margin: -10px; padding: 10px;background: black; color: #eee;">';
-////        print_r($slides);
-////        echo '</pre>';
-//        exit;
     }
 
     public function getName()
