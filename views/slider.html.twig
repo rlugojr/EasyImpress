@@ -4,8 +4,8 @@
 
 {% block css %}
     {{ parent() }}
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/slides.css') }}" />
     <style type="text/css">
-
         .step.future,
         .step.past {
             opacity: {{ slider.config.inactive_opacity }};
