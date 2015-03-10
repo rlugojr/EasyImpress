@@ -2,30 +2,40 @@
 slides:
     -
         text: 1
+        attr:
+            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
         data:
             x: 0
             z: 0
             "rotate-y": 0
     -
         text: 2
+        attr:
+            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
         data:
             x: 100
             z: -100
             "rotate-y": 90
     -
         text: 3
+        attr:
+            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
         data:
             x: 0
             z: -200
             "rotate-y": 180
     -
         text: 4
+        attr:
+            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
         data:
             x: -100
             z: -100
             "rotate-y": 270
     -
         text: 5
+        attr:
+            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
         data:
             x: 0
             y: -100
@@ -34,6 +44,8 @@ slides:
             "rotate-x": 90
     -
         text: 6
+        attr:
+            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
         data:
             x: 0
             y: 100
