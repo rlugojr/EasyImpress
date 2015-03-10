@@ -37,8 +37,8 @@
     var impressElement = impress();
     impressElement.init();
 
-    $('#left_arrow_clickable').on('click',function(){impressElement.prev();});
-    $('#right_arrow_clickable').on('click',function(){impressElement.next();});
+    $('#left_arrow_clickable,.impress-button-prev').on('click',function(){impressElement.prev();});
+    $('#right_arrow_clickable,.impress-button-next').on('click',function(){impressElement.next();});
 
     $('.credit-collapse').click(function(){
         var $this = $(this);
