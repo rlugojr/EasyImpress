@@ -3,11 +3,6 @@
     "description": "Silex application to create presentations with Impress.js",
     "homepage": "https://github.com/Orbitale/EasyImpress",
     "type": "silex-project",
-    "autoload": {
-        "psr-0": {
-			"Orbitale": "/"
-		}
-    },
     "license": "MIT",
     "require": {
         "silex/silex": "~1.2",

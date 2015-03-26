@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "999b1dcf7534b27325a5775ea2f24f3c",
+    "hash": "3398ddca63b84113ee9bbf366cad757a",
     "packages": [
         {
             "name": "jbinfo/mobile-detect-service-provider",
