@@ -4,6 +4,8 @@ This is a simple [Silex](http://silex.sensiolabs.org/) application using the awe
 [Impress.js](https://github.com/bartaz/impress.js) to create sliders based on a single `yml`
 configuration file.
 
+[View the online demo](http://demo.orbitale.io/easy_impress/)
+
 # Requirements
 
 * PHP 5.3+
