@@ -1,10 +1,13 @@
 {
-    "name": "pierstoval/impress-portfolio",
+    "name": "orbitale/impress-portfolio",
+    "description": "Silex application to create presentations with Impress.js",
+    "homepage": "https://github.com/Orbitale/EasyImpress",
     "autoload": {
         "psr-0": {
-			"Pierstoval": "/"
+			"Orbitale": "/"
 		}
     },
+    "license": "MIT",
     "require": {
         "silex/silex": "~1.2",
         "twig/twig": ">=1.8,<2.0-dev",

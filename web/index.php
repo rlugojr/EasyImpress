@@ -1,4 +1,12 @@
 <?php
+/*
+* This file is part of the Orbitale EasyImpress package.
+*
+* (c) Alexandre Rock Ancelet <alex@orbitale.io>
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
 
 use Silex\Application as App;
 use Symfony\Component\Routing\Generator\UrlGenerator;
@@ -15,7 +23,7 @@ $app = new App();
 
 include APPDIR.'bootstrap.php';
 
-$app->error(function (\Exception $e, $code) use ($app, $twig) {
+$app->error(function (\Exception $e, $code) use ($twig) {
     return $twig->render('error.html.twig', array(
         'exception' => $e,
         'code' => $code,
@@ -23,7 +31,7 @@ $app->error(function (\Exception $e, $code) use ($app, $twig) {
 });
 
 if (APPDEBUG === true) {
-    $app->get('/delete_thumbs', function () use ($app, $twig, $urlGenerator) {
+    $app->get('/delete_thumbs', function () use ($app, $urlGenerator) {
 
         $sliders = glob(SLIDESDIR.'*');
 
@@ -40,7 +48,7 @@ if (APPDEBUG === true) {
     });
 }
 
-$app->get('/', function () use ($app, $twig) {
+$app->get('/', function () use ($twig) {
     $sliderName = 'home';
 
     if (!file_exists(SLIDESDIR.$sliderName.'/parameters.yml')) {
@@ -54,7 +62,7 @@ $app->get('/', function () use ($app, $twig) {
 ->assert('_locale', LOCALES)
 ->bind('home');
 
-$app->get('/img/{sliderName}.{slideId}.jpg', function ($sliderName, $slideId, Request $request) use ($app, $urlGenerator, $mobileDetect) {
+$app->get('/img/{sliderName}.{slideId}.jpg', function ($sliderName, $slideId, Request $request) use ($urlGenerator, $mobileDetect) {
 
     $thumb = $request->query->has('thumbnail') && $request->query->get('thumbnail') === 'true';
 
@@ -142,7 +150,7 @@ $app->get('/img/{sliderName}.{slideId}.jpg', function ($sliderName, $slideId, Re
 })
 ->bind('sliderImg');
 
-$app->get((USE_LOCALE ? '/{_locale}' : '').'/{sliderName}', function ($sliderName) use ($app, $twig, $urlGenerator) {
+$app->get((USE_LOCALE ? '/{_locale}' : '').'/{sliderName}', function ($sliderName) use ($twig, $urlGenerator) {
 
     $sliderName = rtrim($sliderName, '/');
 

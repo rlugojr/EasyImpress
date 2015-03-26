@@ -1,4 +1,13 @@
 <?php
+/*
+* This file is part of the Orbitale EasyImpress package.
+*
+* (c) Alexandre Rock Ancelet <alex@orbitale.io>
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
+
 /** @var Silex\Application $app */
 
 use Silex\Provider\UrlGeneratorServiceProvider;

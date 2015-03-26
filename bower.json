@@ -1,11 +1,11 @@
 {
-    "name": "pierstoval/impress-porfolio",
+    "name": "orbitale/impress-porfolio",
     "version": "0.1",
     "authors": [
         "Alex Pierstoval <pierstoval@gmail.com>"
     ],
     "license": "MIT",
-    "homepage": "https://github.com/Pierstoval/ImpressPortfolio",
+    "homepage": "https://github.com/Orbitale/EasyImpress",
     "private": true,
     "dependencies": {
         "bootstrap": "https://github.com/twbs/bootstrap.git#~3",
