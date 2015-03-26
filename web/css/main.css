@@ -603,5 +603,5 @@ body {
 
 @media (max-width: 767px) { .infos-block {width: 100%;} .step .credits {width: calc(100% - 200px);} }
 @media (min-width: 768px) { .infos-block {width: 700px;} .step .credits {width: calc(100% - 250px);} }
-@media (min-width: 992px) { .infos-block {width: 920px;} .step .credits {width: 720px;}  }
-@media (min-width: 1200px) { .infos-block {width: 1120px;} .step .credits {width: 900px;}  }
+@media (min-width: 992px) { .infos-block {width: 920px;} .step .credits {width: 720px;} }
+@media (min-width: 1200px) { .infos-block {width: 1120px;} .step .credits {width: 900px;} }
