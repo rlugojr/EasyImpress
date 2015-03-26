@@ -1,22 +1,22 @@
 
 slides:
     -
-        text: 1
+        text: 1<br><small>(image)</small>
         image: true
         attr:
-            style: "background-size: cover; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
+            style: "background-size: cover; width: 200px; height: 200px; padding: 50px 0 0 0; margin: 0;"
         data:
             x: 0
             z: 0
             "rotate-y": 0
     -
-        text: 2
+        view: true
         attr:
-            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
+            style: "background: #000; width: 200px; height: 200px; padding: 50px 0 0 0; margin: 0;"
         data:
             x: 100
             z: -100
-            "rotate-y": 90
+            rotate-y: 90
     -
         text: 3
         attr:
