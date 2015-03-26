@@ -108,7 +108,6 @@ class Slider implements \Countable
         foreach ($slides['slides'] as $k => $slide) {
             $slide = array_merge(array(
                 'id'              => $k,
-                'createParagraph' => true,
                 'attr'            => array(),
                 'reset'           => array(),
                 'view'            => false,
