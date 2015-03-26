@@ -1,3 +1,5 @@
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/f0277c3f-3c41-46d0-b0c8-5372cb597387/mini.png)](https://insight.sensiolabs.com/projects/f0277c3f-3c41-46d0-b0c8-5372cb597387)
+
 # Impress Portfolio with Silex
 
 This is a simple [Silex](http://silex.sensiolabs.org/) application using the awesome
