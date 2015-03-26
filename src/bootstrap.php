@@ -7,9 +7,8 @@ use Binfo\Silex\MobileDetectServiceProvider;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 
 $app['debug'] = APPDEBUG;
-$app['locale'] = LOCALE;
 $app->register(new UrlGeneratorServiceProvider());
-$app->register(new TranslationServiceProvider(), array('locale_fallbacks' => array(LOCALE),));
+$app->register(new TranslationServiceProvider(), array('locale_fallbacks' => array(DEFAULT_LOCALE),));
 $app->register(new MobileDetectServiceProvider());
 
 include 'twig.php';

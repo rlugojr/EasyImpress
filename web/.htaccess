@@ -1,4 +1,4 @@
-# This is almost the same .htaccess as Symfony distribution.
+# This is almost the same .htaccess as Symfony standard distribution.
 # Use the front controller as index file. It serves as a fallback solution when
 # every other rewrite/redirect fails (e.g. in an aliased environment without
 # mod_rewrite). Additionally, this reduces the matching process for the
@@ -10,7 +10,7 @@ DirectoryIndex index.php
     RewriteEngine On
 
     # Forces www for domain name
-    # Just comment it if you don't want it
+    # Just comment these lines if you don't want it
     RewriteCond %{HTTP_HOST} !^$
     RewriteCond %{HTTP_HOST} !^www\. [NC]
     RewriteCond %{HTTP_HOST} !^127\.0\.0\.1 [NC]

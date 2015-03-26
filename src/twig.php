@@ -32,10 +32,6 @@ $app['twig'] = $app->share($app->extend('twig', function (Twig_Environment $twig
 
 $twig = $app['twig'];
 
-$twig->addGlobal('locale', LOCALE);
-$twig->addGlobal('domain_fr', DOMAIN_FR);
-$twig->addGlobal('domain_en', DOMAIN_EN);
-
 /** @var Twig_Loader_Filesystem $twigLoader */
 $twigLoader = $app['twig.loader.filesystem'];
 

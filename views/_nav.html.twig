@@ -17,17 +17,6 @@
                 <li{% if slider.name == "home" %} class="active"{% endif %}>
                     <a href="{{ url('home', {}) }}">{{ "slides.home.title" | trans }}</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ 'lang' | trans }} <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="http://{{ domain_fr }}{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" {{ locale == 'fr' ? 'class="active"' : '' }}>FR</a>
-                        </li>
-                        <li>
-                            <a href="http://{{ domain_en }}{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" {{ locale == 'en' ? 'class="active"' : '' }}>EN</a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </div><!--/.collapse.navbar-collapse-->
     </div><!--/.container-fluid-->

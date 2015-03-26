@@ -50,6 +50,8 @@ $app->get('/', function () use ($app, $twig) {
     $slider = Slider::create($sliderName, $slides);
     return $twig->render('slider.html.twig', array('slider'=>$slider,'name'=>$sliderName));
 })
+->value('_locale', DEFAULT_LOCALE)
+->assert('_locale', LOCALES)
 ->bind('home');
 
 $app->get('/img/{sliderName}.{slideId}.jpg', function ($sliderName, $slideId, Request $request) use ($app, $urlGenerator, $mobileDetect) {
@@ -140,7 +142,9 @@ $app->get('/img/{sliderName}.{slideId}.jpg', function ($sliderName, $slideId, Re
 })
 ->bind('sliderImg');
 
-$app->get('/{sliderName}', function ($sliderName) use ($app, $twig, $urlGenerator) {
+$app->get((USE_LOCALE ? '/{_locale}' : '').'/{sliderName}', function ($sliderName) use ($app, $twig, $urlGenerator) {
+
+    $sliderName = rtrim($sliderName, '/');
 
     if ($sliderName === 'home') {
         return new RedirectResponse($urlGenerator->generate('home'));
@@ -153,6 +157,8 @@ $app->get('/{sliderName}', function ($sliderName) use ($app, $twig, $urlGenerato
     $slider = Slider::create($sliderName, $slides);
     return $twig->render('slider.html.twig', array('slider'=>$slider,'name'=>$sliderName));
 })
+->value('sliderName', 'home')->assert('sliderName', '\w+/?$')
+->value('_locale', DEFAULT_LOCALE)->assert('_locale', LOCALES)
 ->bind('slider');
 
 $app->run();
