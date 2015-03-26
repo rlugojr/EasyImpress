@@ -2,6 +2,7 @@
     "name": "orbitale/impress-portfolio",
     "description": "Silex application to create presentations with Impress.js",
     "homepage": "https://github.com/Orbitale/EasyImpress",
+    "type": "silex-project",
     "autoload": {
         "psr-0": {
 			"Orbitale": "/"

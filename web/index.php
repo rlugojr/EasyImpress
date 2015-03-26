@@ -31,7 +31,7 @@ $app->error(function (\Exception $e, $code) use ($twig) {
 });
 
 if (APPDEBUG === true) {
-    $app->get('/delete_thumbs', function () use ($app, $urlGenerator) {
+    $app->get('/delete_thumbs', function () use ($urlGenerator) {
 
         $sliders = glob(SLIDESDIR.'*');
 
