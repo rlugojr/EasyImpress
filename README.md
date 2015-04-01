@@ -18,10 +18,12 @@ with the PHP `exec()` function (only if you are using image-based slides)
 
 # Install
 
-* Just clone the repository, or download it as a `zip` file, and put it in the directory you want.
+* Just clone the repository, or download it as a `zip` file from the
+[latest release](https://github.com/Orbitale/EasyImpress/releases/latest), and put it in the directory you want.
 * Make your webserver document root point on the application `web` directory.
 * Copy the `config/config.php.dist` and paste it in `config/config.php`, and change the few 
 constants you need.
+* Install [Composer](https://getcomposer.org/) if you do not have it yet.
 * Run `composer install` to install all the needed dependencies.
 * (optional) If you want to update Impress.js, you just need to run `bower update`, but you obviously need to install
 [Bower](http://bower.io/), which needs [NodeJS](https://nodejs.org/) and [Git](http://git-scm.com/).
@@ -33,11 +35,29 @@ cube on a gray background!
 
 ### App config
 
+Your first `config.php` file should look like this:
+
+```php
+<?php
+
+define('APPDEBUG', true);
+define('LOCALES', 'en|fr');
+
+define('DEFAULT_LOCALE', 'en');
+define('USE_LOCALE', true);
+
+define('CONVERT_PATH', '/usr/bin/convert');
+```
+
 `APPDEBUG` config is used to render the backtrace for each error. Set it to `false` on production.
+
 `USE_LOCALE` is used to whether prepend the `locale` on the URI, to allow you to translate your application.
+
 `LOCALES` is a list of locales you want to use in your application. This must be a list of the locales separated 
 with a pipe `|`.
+
 `DEFAULT_LOCALE` is used as fallback locale for the translator, and also used as the locale used for the `home` URI.
+
 `CONVERT_PATH` is mandatory for ImageMagick to generate thumbnails for your image-based sliders (like a 
 photography portfolio). This must be the absolute path to the `convert` ImageMagick binary, or `convert.exe` on Windows.
 
