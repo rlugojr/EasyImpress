@@ -1,58 +1,24 @@
 
 slides:
-    -
-        text: 1<br><small>(image)</small>
-        image: true
-        attr:
-            style: "background-size: cover; width: 200px; height: 200px; padding: 50px 0 0 0; margin: 0;"
+    overview:
+        overview: true
         data:
             x: 0
-            z: 0
-            "rotate-y": 0
-    -
+            z: 1500
+    home:
         view: true
-        attr:
-            style: "background: #000; width: 200px; height: 200px; padding: 50px 0 0 0; margin: 0;"
+    details:
+        view: true
         data:
-            x: 100
-            z: -100
-            rotate-y: 90
-    -
-        text: 3
-        attr:
-            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
+            x: 2500
+            z: -1000
+            "rotate-y": 90
+    experiences:
+        view: true
         data:
             x: 0
-            z: -200
+            z: -2000
             "rotate-y": 180
-    -
-        text: 4
-        attr:
-            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
-        data:
-            x: -100
-            z: -100
-            "rotate-y": 270
-    -
-        text: 5
-        attr:
-            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
-        data:
-            x: 0
-            y: -100
-            z: -100
-            "rotate-y": 360
-            "rotate-x": 90
-    -
-        text: 6
-        attr:
-            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
-        data:
-            x: 0
-            y: 100
-            z: -100
-            "rotate-y": 360
-            "rotate-x": -90
 
 config:
     inactive_opacity: 1

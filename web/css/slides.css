@@ -1,3 +1,70 @@
-#impress[data-name="home"] .step {
-    /* Custom css for "home" slider steps */
+.impress_slide_home .step {
+    background: rgba(221, 221, 221, 0.95);
+    color: #444;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+.impress_slide_home .step a {
+    color: #006;
+}
+
+.btn {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.step#details {
+    padding: 40px 80px;
+}
+.step#experiences table {
+    font-size: 0.6em;
+}
+.step#experiences table tr th {
+    text-align: center;
+}
+#table_wrapper {
+    max-height: 760px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.list-details,
+.list-details li,
+.list-details ul
+{
+    text-align: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.list-details > li {
+    font-weight: bold;
+}
+.list-details > li > ul > li {
+    font-weight: normal;
+    font-size: 0.8em;
+}
+.list-details > li > ul,
+.list-details > li > ul > li {
+    display: inline-block;
+}
+.list-details > li > ul > li {
+    padding: 0 6px;
+}
+.list-details > li > ul > li + li {
+    border-left: solid 1px #333;
+}
+.list-details > li > ul {
+    float: right;
+}
+.list-details > li:after,
+.list-details > li > ul:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.list-details > li {
+    display: block;
 }
