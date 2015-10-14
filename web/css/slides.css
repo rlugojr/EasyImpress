@@ -1,3 +1,14 @@
 #impress[data-name="home"] .step {
     /* Custom css for "home" slider steps */
 }
+
+a,
+a:focus,
+a:hover {
+    text-decoration: underline;
+}
+
+#impress[data-name="online_demo"] .step {
+    color: #eeeeee;
+}
+

@@ -1,58 +1,44 @@
-
 slides:
-    -
-        text: 1<br><small>(image)</small>
-        image: true
-        attr:
-            style: "background-size: cover; width: 200px; height: 200px; padding: 50px 0 0 0; margin: 0;"
+    first:
+        text: Have you ever seen <a href="https://github.com/bartaz/impress.js">Impress.js</a>?
+    amazing:
+        text: Have you seen how awesome it is?
+        data:
+            x: 1000
+    you_can_do_it:
+        text: And do you know that you can create your own slider easily?
+        data:
+            x: 2000
+    movement_3d:
+        text: With 3D movement...
         data:
             x: 0
-            z: 0
-            "rotate-y": 0
-    -
-        view: true
-        attr:
-            style: "background: #000; width: 200px; height: 200px; padding: 50px 0 0 0; margin: 0;"
+            y: 1500
+            z: 1050
+            rotate-x: -45
+            rotate-y: -45
+    before_overview:
+        text: And overview (see next slide).
         data:
-            x: 100
-            z: -100
-            rotate-y: 90
-    -
-        text: 3
-        attr:
-            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
+            z: 7000
+    overview:
         data:
-            x: 0
-            z: -200
-            "rotate-y": 180
-    -
-        text: 4
-        attr:
-            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
+            x: 1000
+            z: 10000
+    yml:
+        text: Based on a simple <code>YAML</code> file...
         data:
-            x: -100
-            z: -100
-            "rotate-y": 270
-    -
-        text: 5
+            x: 1000
+            z: 10000
+            y: 1000
+    download:
         attr:
-            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
+            style: "text-shadow: 0 0 10px #000, 0 0 10px #000;"
+        text: Download it on <a href="https://github.com/Orbitale/EasyImpress">Github</a>
         data:
-            x: 0
-            y: -100
-            z: -100
-            "rotate-y": 360
-            "rotate-x": 90
-    -
-        text: 6
-        attr:
-            style: "background: #000; width: 200px; height: 200px; padding: 0; margin: 0; line-height: 200px;"
-        data:
-            x: 0
-            y: 100
-            z: -100
-            "rotate-y": 360
-            "rotate-x": -90
+            x: 1000
+            y: 1000
+            z: 11000
 
 config:
     inactive_opacity: 1
@@ -61,3 +47,4 @@ config:
         min-scale: 1
     attr:
         style: "width: 100%;height: 100%;"
+
