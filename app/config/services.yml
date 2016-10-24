@@ -1,0 +1,10 @@
+services:
+    impress:
+        class: Orbitale\Bundle\EasyImpressBundle\Impress\Impress
+        arguments:
+            - '@cache.system'
+            - '@impress.config_processor'
+            - '%kernel.root_dir%/config/presentations'
+
+    impress.config_processor:
+        class: Orbitale\Bundle\EasyImpressBundle\Impress\ConfigProcessor

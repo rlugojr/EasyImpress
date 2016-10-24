@@ -1,0 +1,6 @@
+presentation:
+    path: /{presentationName}
+    defaults:
+        _controller: 'EasyImpressBundle:Default:presentation'
+        presentationName: home
+

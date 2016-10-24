@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Erreur
+{% endblock %}
+
+{% block content %}
+
+    <div class="jumbotron">
+        <h1>{{ 'error.httpCode' | trans({'%code%':code}) }}</h1>
+        <p>{{ exception.message | trans }}</p>
+    </div>
+
+{% endblock %}
+&

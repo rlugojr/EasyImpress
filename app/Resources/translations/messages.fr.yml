@@ -1,0 +1,10 @@
+slider_not_found: Slider non trouvé
+
+error:
+    httpCode: 'Erreur %code%...'
+
+lang: Langue
+
+slides:
+    home:
+        title: Accueil
